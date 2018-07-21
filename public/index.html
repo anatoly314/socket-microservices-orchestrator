@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Express</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/engine.io-client/3.2.1/engine.io.js"></script>
+    <script src="javascripts/index.js" defer></script>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1 style="text-align: center;">Clients Dashboard</h1>
+        <h3 style="text-align: center;">Connected to Orchestrator: {{connected}}</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Client Id</th>
+                <th scope="col">Client Type</th>
+                <th scope="col">Client Name</th>
+                <th scope="col">Client IP</th>
+                <th scope="col">Connected At</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(client, index) in clients">
+                <th scope="row">{{index + 1}}</th>
+                <td>{{client.id}}</td>
+                <td>{{client.type}}</td>
+                <td>{{client.name}}</td>
+                <td>{{client.address}}</td>
+                <td>{{client.connectedAt}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

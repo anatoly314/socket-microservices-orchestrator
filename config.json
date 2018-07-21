@@ -1,0 +1,10 @@
+{
+  "request_service_map" : {
+    "LAUNCH_SHIP" : "SPACEPORT",
+    "LAND_SHIP" : "SPACEPORT",
+    "FIX_SHIP" : "WORKSHOP",
+    "BUY_SHIP" : "DEPOT",
+    "SELL_SHIP" : "DEPOT",
+    "UPGRADE_SHIP" : "DEPOT, WORKSHOP"
+  }
+}
