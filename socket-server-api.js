@@ -52,11 +52,16 @@ function _bindEventsToConnectedSocket(socket){
         _emitUpdateClientsListEvent();
     });
 
+    socket.on('error', function(error) {
+        console.error("Error happened", error);
+    });
+
     let clientType = socket.handshake.query.type;
     if(clientType === CLIENTS_TYPES.SERVICE){
-        socket.on("serviceResponse", function (response) {
+        socket.on("serviceResponse", function (response, callback) {
             console.log("serviceResponse", response);
             _resolveResponseCallback(response);
+            callback("Server successfully received data");
         })
     }
 }
@@ -91,9 +96,12 @@ socketServerApi.sendRequestToService = function (req) {
 
     if(requiredServices.length){
         let socket = requiredServices[0];
-        socket.emit(requestType, {
+        let event = {
             uuid: uuid,
             body: requestBody
+        };
+        socket.emit(requestType, event, function(responseData){
+            console.log('Callback called with data:', responseData);
         });
     }
 
